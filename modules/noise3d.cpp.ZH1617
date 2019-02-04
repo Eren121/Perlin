@@ -1,0 +1,58 @@
+#include "noise3d.hpp"
+#include <ctime>
+#include <cstdlib>
+#include <SFML/Graphics.hpp>
+
+float Perlin3D::getNoise(float x, float y, float z) const
+{
+    float n(0);
+    float scale(0.5);
+    float octave(2);
+
+    for(int sample = size; sample > 0; sample /= octave)
+    {
+
+
+    }
+
+    return n;
+}
+
+
+Perlin3D::Perlin3D() : size(128), rnd(size, vector_ndim<2, sf::Vector2f>(size, std::vector<sf::Vector2f>(size)))
+{
+    srand(time(0));
+
+    for(int i = 0; i < rnd.size(); i++)
+    {
+        for(int j = 0; j < rnd[0].size(); j++)
+        {
+            for(int k = 0; k < rnd[0][0].size(); k++)
+            {
+                rnd[i][j][k].x = rand() / static_cast<float>(RAND_MAX);
+            }
+        }
+    }
+}
+
+void Perlin3D::render()
+{
+    float w = rnd.size();
+    float h = rnd[0].size();
+    sf::RectangleShape rect({window.getSize().x / w, window.getSize().y / h});
+
+    for(int i = 0; i < w; i++)
+    {
+        for(int j = 0; j < h; j++)
+        {
+            unsigned char r = getNoise(i, j, 0) * 255;
+            rect.setPosition(i * rect.getSize().x, j * rect.getSize().y);
+            rect.setFillColor({r, r, r});
+            window.draw(rect);
+        }
+    }
+}
+
+void Perlin3D::update()
+{
+}

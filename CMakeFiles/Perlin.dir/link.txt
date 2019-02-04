@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/Perlin.dir/main.cpp.o CMakeFiles/Perlin.dir/module.cpp.o CMakeFiles/Perlin.dir/modules/world.cpp.o CMakeFiles/Perlin.dir/chunk.cpp.o CMakeFiles/Perlin.dir/noise2d.cpp.o  -o Perlin -lsfml-window -lsfml-system -lsfml-graphics 
